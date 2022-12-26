@@ -10,16 +10,19 @@ namespace Task4
     {
         static void Main(string[] args)
         {
-            int[] sarray = new int[] {2, 5, 7, 17, 37 };
+            Console.WriteLine("Введите число k:");
+            int k = int.Parse(Console.ReadLine());
+            int[] sarray = CreateSetOfNumbers(k);
+
             long n = 1;
             foreach (var variable in sarray)
             {
                 n = n * variable;
             }
             long s = 0;
-            for (int i = 7; i < n; i = i + 10)
+            for (long i = 7; i < n; i = i + 10)
             {
-                if (IsKANumberOfRaff(i) == true)
+                if (IsKANumberOfRaff(i,sarray) == true)
                 {
                     s += i;
                 }
@@ -29,9 +32,17 @@ namespace Task4
             Console.ReadKey();
         }
 
-        static bool IsKANumberOfRaff(int k)
+        static bool IsKANumberOfRaff(long k, int[] s)
         {
-            if ((k %2 == 0) | (k % 5 == 0) | (k % 7 == 0) | (k % 17 == 0) | (k % 37 == 0))
+            int m = 0;
+            foreach(var variable in s)
+            {
+                if (k % variable == 0)
+                {
+                    m += 1;
+                }
+            }
+            if (m > 0)
             {
                 return false;
             }
@@ -39,6 +50,21 @@ namespace Task4
             {
                 return true;
             }
+        }
+
+        static int[] CreateSetOfNumbers(int k)
+        {
+            int m = k + 2;
+            int[] setOfNumbers = new int[m];
+            setOfNumbers[0] = 2;
+            setOfNumbers[1] = 5;
+            while (m > 2)
+            {
+                m = m - 1;
+                
+                setOfNumbers[m] = int.Parse(Console.ReadLine());
+            }
+            return setOfNumbers;
         }
     }
 }
