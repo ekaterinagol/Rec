@@ -10,8 +10,34 @@ namespace Program3
     {
         static void Main(string[] args)
         {
-            int n = int.Parse(Console.ReadLine());
-            Console.WriteLine(IsNumberSimple(n));
+            for (int number = 1; ; number += 2) //сразу рассмартриваем только нечетные
+            {
+                if (IsNumberComposite(number))
+                {
+                    int count = 0;
+                    for (int i = 0; i < (number-2); i++)
+                    {
+                        if (IsNumberSimple(i))
+                        {
+                            for (int x = 1; x <= (number - 1); x++)
+                            {
+                                if (i + 2 * (x * x) == number)
+                                {
+                                    count++;
+                                }
+
+                            }
+                        }
+                    }
+                    if (count == 0)
+                    {
+                        Console.WriteLine($"{number} - наименьшее число, не соответствующее гипотезе Гольдбаха");
+                        break;
+                    }
+
+                }
+                else { continue; }
+            }
 
             Console.ReadKey();
         }
@@ -33,7 +59,27 @@ namespace Program3
                     }
                 }
             }
-            return flag;          
+
+            return flag;
+        }
+
+        static bool IsNumberComposite(int number)
+        {
+            bool flag = false;
+            int count = 0;
+            for (int i = 2; i <= (number/2); i++)
+            {
+                if (number % i == 0)
+                {
+                    count++;
+                }
+            }
+            if (count > 0)
+            {
+                flag = true;
+            }
+
+            return flag;
         }
     }
 }
