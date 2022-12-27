@@ -34,22 +34,15 @@ namespace Task4
 
         static bool IsKANumberOfRaff(long k, int[] s)
         {
-            int m = 0;
-            foreach(var variable in s)
+            bool flag = true;
+            foreach (var variable in s)
             {
                 if (k % variable == 0)
                 {
-                    m += 1;
+                    flag = false;
                 }
             }
-            if (m > 0)
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
+            return flag;
         }
 
         static int[] CreateSetOfNumbers(int k)
