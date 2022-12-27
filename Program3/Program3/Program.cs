@@ -10,7 +10,7 @@ namespace Program3
     {
         static void Main(string[] args)
         {
-            for (int number = 1; ; number += 2) //сразу рассмартриваем только нечетные
+            for (int number = 1; ; number += 2) //сразу рассматриваем только нечетные
             {
                 if (IsNumberComposite(number))
                 {
@@ -36,7 +36,10 @@ namespace Program3
                     }
 
                 }
-                else { continue; }
+                else 
+                { 
+                    continue; 
+                }
             }
 
             Console.ReadKey();
