@@ -10,6 +10,7 @@ namespace Program3
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Ниже будет представлено наименьшее число, не соответствующее второй гипотезе Гольдбаха (подождите немного)");
             for (int number = 1; ; number += 2) //сразу рассматриваем только нечетные
             {
                 if (IsNumberComposite(number))
@@ -31,7 +32,7 @@ namespace Program3
                     }
                     if (count == 0)
                     {
-                        Console.WriteLine($"{number} - наименьшее число, не соответствующее гипотезе Гольдбаха");
+                        Console.WriteLine($"    Это число {number}.");
                         break;
                     }
 
